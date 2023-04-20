@@ -1,9 +1,6 @@
-import argparse
 import numpy as np
 import sys
-# parser = argparse.ArgumentParser()
-# parser.add_argument("file_name", type=str ,help="file path")
-# arg=parser.parse_args()
+
 if len(sys.argv) != 2:
     print("Usage: python script.py <file_path>")
     sys.exit(1)
