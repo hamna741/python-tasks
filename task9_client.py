@@ -23,17 +23,17 @@ async def send_messages():
         await websocket.send(json.dumps({'action': 'connect'}))
         response = await websocket.recv()
        
-        #print("Connected to server! Response: {}".format(response))
+       
         
         logging.info(f"CLIENT-->{id(websocket)} CONNECTED TO SERVER AT PORT: ",8765 )
 
         # Send messages to server and receive responses
         
         print("receiving data from server...")
-        if os.path.exists("cleint_server_data.json"):
+        if os.path.exists("client_server_data.json"):
                  
                  print("deleting old copy of file")
-                 os.remove("cleint_server_data.json")
+                 os.remove("client_server_data.json")
         print("writng to json file")
         for message in messages:
             start_time = time.time()
@@ -44,8 +44,7 @@ async def send_messages():
 
             #response
             response_data = json.loads(response)
-           # print("Received from server: {}".format(response_data))
-            #print("Time taken to receive response: {:.2f} seconds".format(end_time - start_time))
+           
 
             # writing messages to file
             

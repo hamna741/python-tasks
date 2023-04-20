@@ -3,9 +3,9 @@ import websockets
 import json
 import time
 import logging
-#client_count={}
+
 async def handle_client(websocket, path):
-    #client_count=client_count[id(websocket)] = websocket
+    #
     logging.basicConfig(filename = 'websocket_logs.log',
                         level = logging.INFO,
                     
@@ -14,8 +14,7 @@ async def handle_client(websocket, path):
     print("---------WELCOME TO WEB SERVER---------")
     logging.info(f"CLIENT-->{id(websocket)} CONNECTED SUCCESSFULLY ")
     
-   # initial_message = {'message': 'Welcome to the WebSocket server!'}
-    #await websocket.send(json.dumps(initial_message))
+   
 
     # Wait for messages from the client
     while True:
