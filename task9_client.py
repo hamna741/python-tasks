@@ -48,7 +48,7 @@ async def send_messages():
 
             # writing messages to file
             
-            with open('cleint_server_data.json', 'a') as f:
+            with open('client_server_data.json', 'a') as f:
                 f.write("Sent: {}\n".format(message))
                 f.write("Received: {}\n".format(response_data))
                 f.write("Time taken: {:.4f} seconds\n".format(end_time - start_time))
