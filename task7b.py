@@ -4,13 +4,13 @@ import logging
 
 def divisbility_check(dividend, divisor):
     
-    logging.info(f"finding divisible numbers in range {start}-{end} by {divisor}")
+    logging.info(f"finding divisible numbers in range 1 -{dividend} by {divisor}")
     for i in range(1,dividend+1):
         if i%divisor==0:
             count+=1
     logging.info(f"Found {count} divisible numbers in range 1-{dividend} by {divisor}")
 logging.basicConfig(filename='async_divisibles.log', level=logging.INFO)
-logging.info(f" <----SYNCRONOUS-->")
+logging.info(f" <----SYNCRONOUS---->")
 start_time =time.time()
 divisbility_check(50800000, 3411)
 divisbility_check(100052,3210)
