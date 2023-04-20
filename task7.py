@@ -18,7 +18,7 @@ async def find_divisibles(dividend,  divisor):
 
 async def main():
     logging.basicConfig(filename='divisibles.log', level=logging.INFO)
-    logging.info(f" <----ASYNCRONOUS-->")
+    logging.info(f" <----ASYNCRONOUS---->")
     start_time = time.time()
 
     tasks = [
@@ -38,15 +38,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    
-#     ans1 = loop.create_task(divisbility_check(50800000, 3411))
-#     ans2 = loop.create_task(divisbility_check(100052,3210))
-#     ans3 = loop.create_task(divisbility_check(20000,5))
-#     await asyncio.wait([ans1, ans2, ans3])
-#     return ans1, ans2, ans3
-# if __name__=="__main__":
-#     loop= asyncio.get_event_loop()
-#     m1,m2,m3=loop.run_until_complete(main())
-#     print(m1.result())
-#     print(m2.result())
-#     print(m3.result())
