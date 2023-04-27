@@ -2,7 +2,7 @@ import numpy as np
 import sys
 
 if len(sys.argv) != 2:
-    print("Usage: python script.py <file_path>")
+    print("missing argument")
     sys.exit(1)
 file_path = sys.argv[1]
 data =np.loadtxt(file_path)
