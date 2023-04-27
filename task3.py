@@ -8,19 +8,16 @@ try:
   group_by_occupation={}
 
   for employee in employee_data:    
-      #print(employee)
+      
       occupation=employee['occupation']
-      #print(occupation)
+      
       if occupation not in group_by_occupation:
-          group_by_occupation[occupation]=[]
+          group_by_occupation[occupation]=[employee]
           
-        # print(group_by_occupation)
+       
       else:
           group_by_occupation[occupation].append(employee)
-        #  print(group_by_occupation)
-
-  #print(group_by_occupation)
-  # Closing file
+       
   file.close()
 
   json_data = json.dumps(group_by_occupation, indent=4)
