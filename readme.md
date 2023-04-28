@@ -57,20 +57,22 @@ Write another python script that call this method asynchronously and create thre
 Also do logging and calculate total time take by the script to complete its task
 
 # TASK8
-write a python script that takes path to a file (text file) as a command line argument and and calculate the following parameters using numpy module:
--Mean
--Median
--Max
--Min
--Standard Deviation
--99th Percentile
--99.9th Percentile
--99.99th Percentile
--99.999th Percentile 
+write a python script that takes path to a file (text file) as a command line argument and and calculate the following parameters using numpy module:  
+-Mean  
+-Median  
+-Max  
+-Min  
+-Standard Deviation  
+-99th Percentile  
+-99.9th Percentile  
+-99.99th Percentile  
+-99.999th Percentile   
 
 # TASK9
-Write a python based client server application using websockets with following features: 
-**Client side:** Read a json data file (json file), send messages from client to server one by one using json data format. Make sure you connect with the server using websocket before sending a message.
+Write a python based client server application using websockets with following features:  
+  
+**Client side:** Read a json data file (json file), send messages from client to server one by one using json data format. Make sure you connect with the server using websocket before sending a message.  
+  
 **Server side:** Server will open a websocket connection and wait to receive the query/message sent by client and append current timestamp in the received message and send response message back to client. 
 Client will also Display the response received and time taken by websocket  from send message to response receive. Also store all the messages received in a file. (Do logging on both side)
 
