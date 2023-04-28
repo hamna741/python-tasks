@@ -21,7 +21,8 @@ Write a python script that display the following parameters:
 # TASK3
 Write a Python script that reads from a Json File (json file) containing data about a group of people. The JSON file should contain a list of dictionaries, with each dictionary representing a person and their attributes (e.g. name, age, occupation). The script should then create a new dictionary that groups the people by their occupation. The keys of the new dictionary should be the occupation names, and the values should be lists of dictionaries representing the people in that occupation. Finally, the script should write the new dictionary to a new JSON file.
 
-Example Input: [  {    "name": "Alice",    "age": 25,    "occupation": "teacher"  }, {    "name": "Bob",    "age": 30,    "occupation": "programmer"  },  {    "name": "Charlie",    "age": 35,    "occupation": "teacher"  }]
+>Example Input:  
+ [  {    "name": "Alice",    "age": 25,    "occupation": "teacher"  }, {    "name": "Bob",    "age": 30,    "occupation": "programmer"  },  {    "name": "Charlie",    "age": 35,    "occupation": "teacher"  }]
 Example OUTPUT: 
 {  "teacher": [   {      "name": "Alice",      "age": 25,      "occupation": "teacher"    },    {      "name": "Charlie",      "age": 35,      "occupation": "teacher"    }  ], "programmer": [    {      "name": "Bob",      "age": 30,      "occupation": "programmer"    }  ]}
 
@@ -45,14 +46,14 @@ Import that python module in first script and call these function and plot graph
 # TASK7
 write a python script that perform the following tasks:
 Write a method name find_divisibles that finds the total divisible number in range from 1-range by a divisor. Example: (20,3) find numbers divisible by 3 in range 1-20 which is [3, 6, 9, 12, 15, 18].
-Write a python script that call this method synchronously and run for all these ranges
-(50800000, 34113)
-(100052,3210)
-(20000,5)
-Write another python script that call this method asynchronously and create three different task for each pair: ( There should be context switching after each division) 
-(50800000, 34113)
-(100052,3210)
-(20000,5)
+Write a python script that call this method synchronously and run for all these ranges  
+(50800000, 34113)  
+(100052,3210)  
+(20000,5)  
+Write another python script that call this method asynchronously and create three different task for each pair: ( There should be context switching after each division)   
+(50800000, 34113)  
+(100052,3210)  
+(20000,5)  
 Also do logging and calculate total time take by the script to complete its task
 
 # TASK8
