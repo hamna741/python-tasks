@@ -5,55 +5,80 @@ import time
 import logging
 import os
 async def send_messages():
-    logging.basicConfig(filename = 'websocket_logs.log',
-                        level = logging.CRITICAL,
-                    format = '%(asctime)s:%(levelname)s:%(name)s:%(message)s')
-    async with websockets.connect('ws://localhost:8765') as websocket:
+    logger = logging.getLogger()
+    # Define console handler with DEBUG log level
+    console_handler = logging.StreamHandler()
+    
+    console_handler.setLevel(logging.DEBUG)
+    console_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    console_handler.setFormatter(console_formatter)
+    logger.addHandler(console_handler)
 
-        # Load messages from JSON file
-        with open('client_messages.json', 'r') as f:
+    file_handler = logging.FileHandler("websocket_logs.log")
+    file_handler.setLevel(logging.INFO)
+    file_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    file_handler.setFormatter(file_formatter)
+    logger.addHandler(file_handler)
+
+    # logging.basicConfig(filename = 'websocket_logs.log',
+    #                     level = logging.CRITICAL,
+    #                 format = '%(asctime)s:%(levelname)s:%(name)s:%(message)s')
+
+    try:
+        async with websockets.connect('ws://localhost:8765') as websocket:
+
+            # Load messages from JSON file
+            with open('client_messages.json', 'r') as file:
+                
+                messages = json.load(file)
+                logging.info("FILE READ SUCCESSFULLY ")
+
+            # Connect to server
+            print("Connecting to server...")
+            logging.info(f"CLIENT-->{id(websocket)}CONNECTED TO SERVER AT PORT: ",8765 )
             
-            messages = json.load(f)
-            logging.info("FILE READ SUCCESSFULLY ")
-
-        # Connect to server
-        print("Connecting to server...")
-        logging.info(f"CLIENT-->{id(websocket)}CONNECTED TO SERVER AT PORT: ",8765 )
-        print("sending data from server...")
-        await websocket.send(json.dumps({'action': 'connect'}))
-        response = await websocket.recv()
-       
-       
+           # await websocket.send(json.dumps({'action': 'connect'}))
+            #response = await websocket.recv()
         
-        logging.info(f"CLIENT-->{id(websocket)} CONNECTED TO SERVER AT PORT: ",8765 )
-
-        # Send messages to server and receive responses
         
-        print("receiving data from server...")
-        if os.path.exists("client_server_data.json"):
-                 
-                 print("deleting old copy of file")
-                 os.remove("client_server_data.json")
-        print("writng to json file")
-        for message in messages:
-            start_time = time.time()
-            await websocket.send(json.dumps(message))
             
-            response = await websocket.recv()
-            end_time = time.time()
+          
 
-            #response
-            response_data = json.loads(response)
+            # Send messages to server and receive responses
+            
            
-
-            # writing messages to file
+            if os.path.exists("client_server_data.json"):
+                    
+                   
+                    os.remove("client_server_data.json")
             
-            with open('client_server_data.json', 'a') as f:
-                f.write("Sent: {}\n".format(message))
-                f.write("Received: {}\n".format(response_data))
-                f.write("Time taken: {:.4f} seconds\n".format(end_time - start_time))
-                f.write("--------------\n")
-                logging.info("TIME TAKEN TO SEND AND REVCEIVE DATA IN {:.4f} SECONDS: ",end_time - start_time )
+            for message in messages:
+                start_time = time.time()
+                await websocket.send(json.dumps(message))
+                
+                response = await websocket.recv()
+                end_time = time.time()
 
-# Run WebSocket client
-asyncio.get_event_loop().run_until_complete(send_messages())
+                #response
+                response_data = json.loads(response)
+            
+
+                # writing messages to file
+                
+                with open('client_server_data.json', 'a') as file:
+                    file.write("Sent: {}\n".format(message))
+                    file.write("Received: {}\n".format(response_data))
+                    print(response_data)
+                    file.write("Time taken: {:.4f} seconds\n".format(end_time - start_time))
+                    file.write("--------------\n")
+                    
+    except Exception as e:
+            
+            logging.error("CONNECTION TO SERVER FAILED  %s",e, extra={'handler': console_handler})
+def main():
+     # Run WebSocket client
+     asyncio.get_event_loop().run_until_complete(send_messages())
+                    
+if __name__ == '__main__':
+     main()
+
